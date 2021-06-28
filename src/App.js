@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import UsersTable from "./components/UsersTable";
+import AdsTable from "./components/AdsTable";
+import WinnersTable from "./components/WinnersTable";
+import Header from "./components/Header";
+import {Route, Switch, Redirect} from "react-router-dom";
+import PrizesTable from "./components/PrizesTable";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+        <Switch>
+          <Route exact path='/ads'>
+            <AdsTable />
+          </Route>
+          <Route exact path='/users'>
+            <UsersTable />
+          </Route>
+          <Route exact path='/winners'>
+            <WinnersTable />
+          </Route>
+          <Route exact path='/prizes'>
+            <PrizesTable />
+          </Route>
+          <Redirect to='/ads' from='/' />
+        </Switch>
     </div>
   );
 }
