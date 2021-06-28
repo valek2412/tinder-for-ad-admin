@@ -37,7 +37,7 @@ export default () => {
             <TableCell>Имя Фамилия</TableCell>
             <TableCell>Номер телефона</TableCell>
             <TableCell>Количество баллов</TableCell>
-            <TableCell>Всего постов: {users.length}</TableCell>
+            <TableCell>Всего пользователей: {users.length}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -52,7 +52,7 @@ export default () => {
               <TableCell component="th" scope="row">
                 {row.points}
               </TableCell>
-              <TableCell></TableCell>
+              <TableCell />
             </TableRow>
           ))}
         </TableBody>
