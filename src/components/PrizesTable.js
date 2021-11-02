@@ -11,6 +11,7 @@ import axios from "axios";
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@material-ui/core";
 import CreateAdForm from "./CreateAdForm";
 import CreatePrizeForm from "./CreatePrizeForm";
+import {serverUrl} from "../config";
 
 const useStyles = makeStyles({
   table: {
@@ -39,13 +40,13 @@ const PrizesTable = () => {
 
   // const handleDelete = async (id) => {
   //   setIsLoading(true);
-  //   await axios.delete(`http://localhost:5000/prizes/${id}`);
+  //   await axios.delete(`${serverUrl}/prizes/${id}`);
   //   setIsLoading(false);
   // }
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`http://localhost:5000/prizes`);
+      const result = await axios(`${serverUrl}/prizes`);
       setPrizes(result.data);
     }
     fetchData();
@@ -88,7 +89,7 @@ const PrizesTable = () => {
         </Table>
       </TableContainer>
       <Dialog open={isDialogOpen} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Добавить рекламу</DialogTitle>
+        <DialogTitle id="form-dialog-title">Добавить приз</DialogTitle>
         <DialogContent>
           <CreatePrizeForm onClose={handleClose} />
         </DialogContent>

@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import axios from "axios";
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@material-ui/core";
 import CreateAdForm from "./CreateAdForm";
+import {serverUrl} from "../config";
 
 const useStyles = makeStyles({
   table: {
@@ -38,13 +39,13 @@ const AdsTable = () => {
 
   const handleDelete = async (id) => {
     setIsLoading(true);
-    await axios.delete(`http://localhost:5000/ads/${id}`);
+    await axios.delete(`${serverUrl}/ads/${id}`);
     setIsLoading(false);
   }
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`http://localhost:5000/ads`);
+      const result = await axios(`${serverUrl}/ads`);
       setAds(result.data);
     }
     fetchData();
@@ -76,7 +77,7 @@ const AdsTable = () => {
                 {row.content}
               </TableCell>
               <TableCell component="th" scope="row">
-                <img className={classes.img} src={`http://localhost:5000/${row.image}`} alt=''/>
+                <img className={classes.img} src={`${serverUrl}/${row.image}`} alt=''/>
               </TableCell>
               <TableCell component="th" scope="row">
                 <div>Просмотры: {row.views}</div>

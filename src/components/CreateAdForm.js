@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {makeStyles} from "@material-ui/core/styles";
+import {serverUrl} from "../config";
 
 const useStyles = makeStyles({
   input: {
@@ -33,7 +34,7 @@ const CreateAdForm = ( { onClose } ) => {
     formData.append('image', selectedFile);
 
     fetch(
-      'http://localhost:5000/ads',
+      `${serverUrl}/ads`,
       {
         method: 'POST',
         body: formData,

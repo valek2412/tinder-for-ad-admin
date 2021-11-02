@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
+import {serverUrl} from "../config";
 
 const useStyles = makeStyles({
   table: {
@@ -22,7 +23,7 @@ export default () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`http://localhost:5000/users`);
+      const result = await axios(`${serverUrl}/users`);
       setUsers(result.data);
     }
     fetchData();

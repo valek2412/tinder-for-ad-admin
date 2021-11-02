@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
+import {serverUrl} from "../config";
 
 const useStyles = makeStyles({
   input: {
@@ -20,7 +21,7 @@ const CreatePrizeForm = ( { onClose } ) => {
   const [cost, setCost] = useState('');
 
   const handleSubmission = () => {
-    axios.post('http://localhost:5000/prizes', { title, cost: parseInt(cost)})
+    axios.post(`${serverUrl}/prizes`, { title, cost: parseInt(cost)})
       .then((res) => {
         console.log(res);
         onClose();
@@ -33,7 +34,7 @@ const CreatePrizeForm = ( { onClose } ) => {
         <TextField
           required
           id="standard-required"
-          label="Заголовок"
+          label="Название"
           value={title}
           onChange={(e) => setTitle(e.target.value)}/>
       </div>
@@ -41,7 +42,7 @@ const CreatePrizeForm = ( { onClose } ) => {
         <TextField
           required
           id="standard-required"
-          label="Описание"
+          label="Стоимость"
           value={cost}
           onChange={(e) => setCost(e.target.value)}/>
       </div>
