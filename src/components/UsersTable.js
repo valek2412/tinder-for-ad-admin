@@ -26,7 +26,7 @@ export default () => {
       const result = await axios(`${serverUrl}/users`);
       setUsers(result.data);
     }
-    fetchData();
+    fetchData().then();
   }, [users.length]);
 
 
@@ -45,10 +45,10 @@ export default () => {
           {users.map(row => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
-                {row.name} {row.surname}
+                {row.name} {row["surname"]}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.phoneNumber}
+                {row["phoneNumber"]}
               </TableCell>
               <TableCell component="th" scope="row">
                 {row.points}

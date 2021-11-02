@@ -48,7 +48,7 @@ const AdsTable = () => {
       const result = await axios(`${serverUrl}/ads`);
       setAds(result.data);
     }
-    fetchData();
+    fetchData().then();
   }, [isDialogOpen, ads.length, isLoading]);
 
   return (
@@ -80,12 +80,12 @@ const AdsTable = () => {
                 <img className={classes.img} src={`${serverUrl}/${row.image}`} alt=''/>
               </TableCell>
               <TableCell component="th" scope="row">
-                <div>Просмотры: {row.views}</div>
-                <div>Лайки:{row.likesCount}</div>
-                <div>Дизлайки: {row.dislikesCount}</div>
-                <div>Избранное: {row.favouritesCount}</div>
+                <div>Просмотры: {row["views"]}</div>
+                <div>Лайки:{row["likesCount"]}</div>
+                <div>Дизлайки: {row["dislikesCount"]}</div>
+                <div>Избранное: {row["favouritesCount"]}</div>
               </TableCell>
-              <TableCell></TableCell>
+              <TableCell />
               <TableCell component="th" scope="row">
                 <Button size='small' color='secondary' onClick={() => handleDelete(row.id)}>Удалить</Button>
               </TableCell>

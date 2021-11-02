@@ -81,7 +81,7 @@ const CreateAdForm = ( { onClose } ) => {
           <Button variant="contained" color="primary" component="span">
             Загрузить изображение
           </Button>
-          {isSelected ? (<div>Выбран файл: {selectedFile.name}</div>) : (<div>Файл не выбран</div>)}
+          {isSelected ? (<div>Выбран файл: {selectedFile["name"]}</div>) : (<div>Файл не выбран</div>)}
         </label>
       </div>
       <div>

@@ -9,7 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@material-ui/core";
-import CreateAdForm from "./CreateAdForm";
 import CreatePrizeForm from "./CreatePrizeForm";
 import {serverUrl} from "../config";
 
@@ -28,7 +27,7 @@ const PrizesTable = () => {
 
   const [prizes, setPrizes] = useState([]);
   const [isDialogOpen, setDialogOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const handleClickOpen = () => {
     setDialogOpen(true);
@@ -49,8 +48,8 @@ const PrizesTable = () => {
       const result = await axios(`${serverUrl}/prizes`);
       setPrizes(result.data);
     }
-    fetchData();
-  }, [isDialogOpen, prizes.length, isLoading]);
+    fetchData().then();
+  }, [isDialogOpen, prizes.length]);
 
   return (
     <>
@@ -79,7 +78,7 @@ const PrizesTable = () => {
                 <TableCell component="th" scope="row">
                   {row.cost}
                 </TableCell>
-                <TableCell></TableCell>
+                <TableCell />
                 <TableCell component="th" scope="row">
                   {/*<Button size='small' color='secondary' onClick={() => handleDelete(row.id)}>Удалить</Button>*/}
                 </TableCell>

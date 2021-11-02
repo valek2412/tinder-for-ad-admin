@@ -26,8 +26,8 @@ export default () => {
       const result = await axios(`${serverUrl}/prizes`);
       setPrizes(result.data);
     }
-    fetchData();
-  }, {});
+    fetchData().then();
+  }, []);
 
   return (
     <TableContainer component={Paper}>
@@ -37,7 +37,7 @@ export default () => {
             <TableCell>Призы</TableCell>
             <TableCell>Победители</TableCell>
             <TableCell>Контакты</TableCell>
-            <TableCell>Всего победителей: {prizes.reduce((acc, item) => acc + item.winners.length, 0)}</TableCell>
+            <TableCell>Всего победителей: {prizes.reduce((acc, item) => acc + item["winners"].length, 0)}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,12 +47,12 @@ export default () => {
                 {row.title}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.winners.map((item) => <div>{item.name} {item.surname}</div>)}
+                {row["winners"].map((item) => <div>{item.name} {item["surname"]}</div>)}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.winners.map((item) => <div>{item.phoneNumber}</div>)}
+                {row["winners"].map((item) => <div>{item["phoneNumber"]}</div>)}
               </TableCell>
-              <TableCell></TableCell>
+              <TableCell />
             </TableRow>
           ))}
         </TableBody>
