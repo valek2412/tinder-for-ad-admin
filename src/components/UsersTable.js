@@ -35,7 +35,7 @@ export default () => {
       <Table className={classes.table} size='small' aria-label="Ads Table">
         <TableHead>
           <TableRow>
-            <TableCell>Имя Фамилия</TableCell>
+            <TableCell>Имя Фамилия Отчество</TableCell>
             <TableCell>Номер телефона</TableCell>
             <TableCell>Количество баллов</TableCell>
             <TableCell>Всего пользователей: {users.length}</TableCell>
@@ -45,7 +45,7 @@ export default () => {
           {users.map(row => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
-                {row.name} {row["surname"]}
+                {row.name} {row["surname"]} {row["patronymic"]}
               </TableCell>
               <TableCell component="th" scope="row">
                 {row["phoneNumber"]}

@@ -58,6 +58,7 @@ const PrizesTable = () => {
           <TableHead>
             <TableRow>
               <TableCell>Название</TableCell>
+              <TableCell>Изображение</TableCell>
               <TableCell>Стоимость</TableCell>
               <TableCell>Всего призов: {prizes.length}</TableCell>
               <TableCell>
@@ -74,6 +75,9 @@ const PrizesTable = () => {
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
                   {row.title}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  <img className={classes.img} src={`${serverUrl}/${row.image}`} alt=''/>
                 </TableCell>
                 <TableCell component="th" scope="row">
                   {row.cost}
